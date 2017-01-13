@@ -1,0 +1,134 @@
+Project Name : Event Management Portal (admin console)
+
+	This is a simple Application, which is for Managing Events.
+	This includes various roles:
+		* Admin
+		* Provider 
+		* Reviewer
+		* Guest 
+
+	On lauch of this application, The user is redirected to Guest user dashboard.
+	As a guest, he/she can view all the upcoming events info.
+	And also enrole for a specific event.
+	The dashboard includes Login/Register options.
+	The new user can Register as "Provider" to the Portal.
+	As soon as he/she register to the system, "Provider" role is assigned. 
+	
+	Admin can also register a Provider upon email request. 
+	Reviewer users/roles are created by admin.
+	Admin is the super user for the system.
+	
+
+	It includes dashboard for each role.
+	Based on the role, dashboard will be shown on the UI.
+	On the dashboard, the user can see the high level actions.
+
+
+
+Guest Role actions:
+	As a Guest, he/she can view the current and upcoming events from Guest dashboard.
+	Guest can view event name, location and event dates.
+	Guest can also enrole for events by reserving in-advance.
+	
+
+Provider Role: 
+	Provider can do several actions on the provider dashboard.
+
+	* Provider can view all the events created by him/her.
+	* Provider can create a new event by choosing "Add New Event".
+	* 
+	Provider can create an Event and submit to admin for further approval.
+		Event includes below properties:
+			* Id
+			* EventName
+			* EventDates(StartDate, EndDate)
+			* EventLocation(Country,State,City,Zipcode)
+			* EventSpeakers(can have multiple speakers)
+			* EventCost
+			* EventDescription(detailed description about the event)
+
+	To approve the event it goes in several stages.
+	* stage 1 : InProgress
+			Provider can choose Add New event option on Provider dashboard
+			Provider will fill the event details and click on Save button. (event will be created and status will be set as "InProgress").
+				(Cancel, SaveAndFinishLater, Submit)
+
+			Once , the provider fill details and click on "Save" button, the event will be created with "InProgress" status and redirect back to dashboard.		
+			While the event is in "InProgress" status, the provider can edit that event again and again from the provider dashboard.
+			
+	* Stage 2 : Submitted
+			Provider will fill the event details and click on Submit button(the event status will be set as "Submitted".
+			Once the status of an event is set to "Submitted", the admin can view that submitted event and assign to the reviewers to review and finalize.
+			
+	* Stage 3 : Changes Required
+			If the admin does not feel happy with event info , he/she can ask for additional info.
+			If the event requires additional info, the admin can click on "Submit for Changes Required" button. So that status of the event will be set "Changes Required".
+			Then, the event goes back to provider for updating info.
+			The provider will update event info and re-submit, then it goes back to admin.
+
+	* Stage 4: Submitted
+			Once , the provider resubmit the event info , then it goes back to admin.
+			Then, the admin can assign  reviewer to review.
+
+	* Stage 5: "Pending Review"
+			Once the admin assign reviewer to the event, the status of the event will be set to "Pending Review".
+
+	* Stage 6: "Approved"/"Rejected"
+			Once the admin assign reviewer to the event, the event will be available in the reviewer dashboard.
+			Then reviewer will Review the event, Submit the event with "Approved"/"Rejected" status.
+
+
+
+	The provider can view all the events on the dashboard by using different filter options.
+		* InProgress events
+		* Submitted events
+		* Changes Required events
+		* Pending Review events
+		* Approved events
+		* Rejected events.
+
+	Inlude radio buttons, for filters.
+
+	By default, the provider can view "InProgress" events.
+
+
+	Only Approved events can be published on the UI.
+	The guests can view only published events and enrole for that events.
+
+
+
+Admin Role:
+	
+	Admin can view all "Submitted" events from all the Provider(s).
+	Adimin can review event and choose either "Changes Required" or "Assign Reviewer" option.
+
+	if the admin choose "assign reviewer", we get a popup to choose the reviewers.
+
+	In the Assign reviewer popup, we get list of available reviewers. 
+	The admin can choose of the reviewers and submit. 
+	Then, the status of that event will be  "Pending Review", that event goes to "Reviewer" dashboard.
+
+
+	If admin feels good, he/she can assign reviewer to that event.
+	If admin feels not happy with event info, he/she can ask for additional info by marking the event "Changes Required".
+
+
+	Admin can also see all the users(providers, reviewers).
+		He/she can also create users , assign roles to that users.
+
+		
+
+Reviewer Role Actions:
+	Reviewer can view all the events assigned to him/her by admin.
+	Reviewer can start reviewing the assigned events.
+	He/she can review the events , then "approve" /"reject" events.
+	On approval or rejection, the reviewer can give his/her comments for the "approval"/"rejection".
+=============================================================================================
+Angular 1.x 
+Bootstrap 
+
+
+
+
+
+

@@ -1,0 +1,203 @@
+You can install Protractor globally via:
+
+$ npm install -g protractor
+Afterwards it should be available on the command line (Windows/Linux)
+$ protractor protractor.conf.js
+
+
+To install just for the current project:
+$ npm install protractor --save-dev
+It can be run via the node_mobules like this (Windows/Linux):
+$ ./node_modules/.bin/protractor protractor.conf.js
+
+You can add it to your package.json for easier running:
+
+"scripts": {
+    "test": "./node_modules/.bin/protractor protractor.conf.js"
+}
+Then later:
+
+$ npm test
+
+
+chromedriver2_win32_0.8
+
+========================
+Protractor Installation
+
+For this project, the Protractor framework is being used and configured on a Windows environment. Below are the steps for installation:
+
+Install Protractor Globally
+
+    Step 1: Download and install NodeJS. http://nodejs.org/download/. After installation make sure its path is configured correctly, so that command execution can find Node.
+
+    Step 2: Open the command prompt and type in the following command to install protractor globally.
+
+1
+	
+npm install –g protractor
+
+Install Protractor Locally
+
+You can install protractor locally in your project directory. Go to your project directory and type in the following command in the command prompt:
+1
+	
+npm install protractor
+
+Verify Installation
+
+To verify your installation, please type in the command
+1
+	
+Protractor --version
+
+If Protractor is installed successfully then the system will display the installed version. Otherwise you will have to recheck the installation.
+
+    Step 3: If you don’t have the Selenium server on your machine, then download the latest version onto your machine. If you want to run tests on different browsers, then please download the respective drivers as well. For example, Chrome driver will come in handy to run tests on the Chrome browser.
+
+Write your test cases:
+
+Create a new folder and name it “test cases” or anything as per your convenience.
+
+·         Create a test case spec file. For example: “grid_spec.js” file below, you can create multiple spec files as per your automation scope.
+
+grid_spec.js
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+	
+describe('HealthSense POC Grid', function() {
+         beforeEach(function() {
+           browser.get('http://Your Application URL');
+            ptor = protractor.getInstance();
+           });
+  
+        it('should click on the grid link', function() {
+               element(by.xpath('//a[contains(text(),"Grid")]')).click();
+           expect(element(by.xpath('//h1')).getText()).toEqual('Master Grid');
+           });
+            
+        it('should enter ID in filter', function() {
+                   ptor.actions().sendKeys(protractor.Key.HOME).perform();
+          element(by.model('Model.ID')).sendKeys('10');
+          results = element.all(by.repeater('value in testValues'));
+               expect(results.count()).toEqual(5);
+           element(by.model('Model.ID')).clear();
+          ptor.actions().sendKeys(protractor.Key.SPACE).perform();
+        });
+            
+        it('should change the number of records per page to 10', function(){
+           element(by.xpath('//select')).click();
+            element(by.css('option[value="10"]')).click();
+            results1 = element.all(by.repeater('value in testValues'));
+          expect(results1.count()).toEqual(10);
+        });
+});
+
+·         Create a configuration: The configuration file is used to define some parameters which will be passed to Protractor to execute our spec files. Please note:
+
+    Selenium server details (required)
+    Location of our spec files (required)
+    Browser capabilities for spec files (required)
+    Jasmine node configuration options (required)
+    Jasmine reporter configuration options (optional)
+
+Below is a sample configuration file:
+
+Conf.js
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+	
+exports.config = {
+ 
+  //The address of a running selenium server.
+  seleniumAddress: 'http://localhost:4444/wd/hub',
+  
+  //Capabilities to be passed to the webdriver instance.
+  capabilities: {
+    'browserName': 'chrome'
+  },
+  
+  //Specify the name of the specs files.
+  specs: ['grid_spec.js'],
+  
+  //Options to be passed to Jasmine-node.
+  jasmineNodeOpts: {
+      onComplete: null,
+      isVerbose: false,
+      showColors: true,
+      includeStackTrace: true
+  }
+};
+Execute your tests:
+
+Once you are ready with your test cases and configuration file, the next step is to execute the test and see the results. Please follow these steps to execute the tests:
+
+Run selenium server
+
+    Make sure the Selenium server (which is specified in the configuration file) is running.
+
+ 
+
+If you want to run the Selenium server manually, then run the following command
+1
+	
+java -jar selenium/selenium-server-standalone-2.35.0.jar -Dwebdriver.chrome.driver=./selenium/chromedriver
+
+Run tests
+
+Finally, you are ready to run the tests. Type the following command in the command prompt:
+
+1
+	
+protractor Conf.js
+
+    You should be able to see the test execution progress and its status on the command line and also generate the test reports in an XML format. Please see the next section for details.
+==================
+ chromeDriver: 'C:/Users/satyanarayanap/AppData/Roaming/npm/node_modules/protractor/selenium/chromedriver.exe',
+
+seleniumServerJar: 'C:/Users/satyanarayanap/AppData/Roaming/npm/node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
+baseUrl: 'http://localhost:9000/'

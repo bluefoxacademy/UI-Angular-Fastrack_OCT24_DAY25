@@ -1,0 +1,59 @@
+Testing 
+
+Manual Testing : Testing in the browser (after deployment)
+
+
+Unit Testing: 
+	Here, we test the business Logic components
+
+Application:
+	UI(Presentation)
+	BL (here, all the business logic)
+	RESTFul Services (Web API , WCF RESTful , Spring MVC RESTful)
+
+
+Automation OR End-End Testing 
+======================
+What we need to follow for Unit Testing:
+how to develop application for Unit Testing? 
+TDD approach .
+	Test Driven Develoment 
+
+What is TDD aproach ?
+
+Here, we must develop an application which can have a separate layer for business logic.
+So that, we can load/instantiate that business logic component, and unit test easilly.
+
+To support TDD, we must split the application into 3 components.
+	* UI (View)
+	* Business Logic (functionality/Controllers)
+	* Data Access Logic ( Model/REST)
+
+Here, we can instantiate the business logic(controllers) and unit test at any moment before we consume in the UI.
+
+
+What is Unit Testing ? 
+	It a technique of testing the functions whether they are returning/executing proper output or not.
+
+
+How to do Unit Testing? 
+	To do Unit Testing ,we need a separate layout(component) in the application.
+
+	In case of Core JavaScript, we use JavaScript OOP for testable components.
+	Use Constructors(objects) for creating Testable components.
+
+	In case of MVC, we got a controller for creating testable components.
+
+	
+how to do? 
+	For this furpose, we need to create a test page(test.html).
+	In this test page, you instantiate the JavaScript component and test the results.
+	Here, we are just deploying only test page. (not whole application).
+=============
+We got many Unit Testing frameworks for JavaScript.
+
+QUnit 
+Mocha 
+Jasmine 
+=========================
+

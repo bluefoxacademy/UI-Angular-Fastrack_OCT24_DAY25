@@ -1,0 +1,49 @@
+Protactor Setup and Installation
+
+Step1 : Chrome  OR firefox Or Safari
+	Download and Install either Chrome or firefox or safari 
+
+
+Step2 : Node.js
+Download and Install Node.js
+
+Step3: Node is working or not?
+Open Console command prompt and check node version 
+npm --version 
+
+
+step4:
+Install Protactor using Node npm command 
+
+npm install -g protractor
+
+check protractor is running or not 
+
+protractor --version 
+
+npm -g list 
+
+
+
+Step5: 
+To work with protractor , we need salenium web driver.
+
+Java JDK download and install
+java -version
+
+
+Step6:
+Update webdriver
+
+webdriver-manager update
+
+
+Step7: Start Web Driver 
+webdriver-manager start 
+
+
+Step8 : 
+run the tests
+c:\users\satyanarayanap\appdata\roaming\npm\node_modules\protractors\examples\protractor conf.js
+
+
